@@ -1,42 +1,50 @@
 import numpy as np
+from collections.abc import Callable
 
 
-def f(x):
-    return (x - 3)**2
+def golden_section_search(precision, trpl: np.ndarray, f: Callable[[float], float]) -> None:
 
+    (a,b,c) = trpl
 
-def golden_section_search(trpl: np.ndarray, f) -> None:
-
-    a = trpl[0]
-    b = trpl[1]
-    c = trpl[2]
+    # golden ratio
+    phi = (1 + np.sqrt(5)) / 2
 
     if not (f(b) < f(a) and f(b) < f(c)):
         return
 
-    phi = (1 + np.sqrt(5)) / 2
+    while c - a > precision:
 
-    while c - a > 0.0001: # tolerance
-        
-        b = (c - a) / phi + a
-        d = (a - c) / phi + c
+        # check whether d is placed to the left or right of b
+        if b - a > c - b:
+            d = (a - c) / phi + c
 
-        if f(b) > f(d):
-            c = b
+            # compare the function values of b and d
+            if f(b) > f(d):
+                # new triple: (a, d, b)
+                c = b
+                b = d
+            else:
+                # new triple: (d, b, c)
+                a = d
         else:
-            a = d
+            d = (c - a) / phi + a
 
-        print(f"a: {a}, d: {d}, b: {b}, c: {c}")
+            if f(b) > f(d):
+                # new triple: (b, d, c)
+                a = b
+                b = d
+            else:
+                # new triple: (a, b, d)
+                c = d
 
-    trpl[0] = a
-    trpl[2] = c
+    trpl[:] = a, b, c
 
 
 def main():
-    a = np.array([0, 2, 10])
-    golden_section_search(a, f)
-
-    print(a, f)
+    trpl = np.array([0, 4, 10], dtype=float)
+    golden_section_search(0.0001, trpl, lambda x: (x-3)**2)
+    print(f"New triple: {trpl}")
+    print(f"Minimum is: {int(trpl[1])}")
 
 
 if __name__ == "__main__":
