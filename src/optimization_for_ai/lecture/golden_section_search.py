@@ -1,4 +1,4 @@
-# Note: In the homework assignment the variable 'trpl' and the function 'f'
+# Note: In the lecture exercise the variable 'trpl' and the function 'f'
 # are already predefined
 
 (a, b, c) = trpl
