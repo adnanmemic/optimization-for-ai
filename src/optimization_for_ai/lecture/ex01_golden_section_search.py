@@ -6,7 +6,6 @@
 phi = (1 + np.sqrt(5)) / 2
 
 if b - a > c - b:
-
     d = (a - c) / phi + c
 
     if f(d) < f(b):

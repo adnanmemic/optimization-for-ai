@@ -1,10 +1,13 @@
-import numpy as np
 from collections.abc import Callable
 
+import numpy as np
 
-def golden_section_search(precision, trpl: np.ndarray, f: Callable[[float], float]) -> None:
 
-    (a,b,c) = trpl
+def golden_section_search(
+    precision, trpl: np.ndarray, f: Callable[[float], float]
+) -> None:
+
+    (a, b, c) = trpl
 
     # golden ratio
     phi = (1 + np.sqrt(5)) / 2
@@ -13,7 +16,6 @@ def golden_section_search(precision, trpl: np.ndarray, f: Callable[[float], floa
         return
 
     while c - a > precision:
-
         # check whether d is placed to the left or right of b
         if b - a > c - b:
             d = (a - c) / phi + c
@@ -42,7 +44,7 @@ def golden_section_search(precision, trpl: np.ndarray, f: Callable[[float], floa
 
 def main():
     trpl = np.array([0, 4, 10], dtype=float)
-    golden_section_search(0.0001, trpl, lambda x: (x-3)**2)
+    golden_section_search(0.0001, trpl, lambda x: (x - 3) ** 2)
     print(f"New triple: {trpl}")
     print(f"Minimum is: {int(trpl[1])}")
 
