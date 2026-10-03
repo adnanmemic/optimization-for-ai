@@ -19,7 +19,7 @@ def golden_section_search(precision, trpl: np.ndarray, f: Callable[[float], floa
             d = (a - c) / phi + c
 
             # compare the function values of b and d
-            if f(b) > f(d):
+            if f(d) < f(b):
                 # new triple: (a, d, b)
                 c = b
                 b = d
@@ -29,7 +29,7 @@ def golden_section_search(precision, trpl: np.ndarray, f: Callable[[float], floa
         else:
             d = (c - a) / phi + a
 
-            if f(b) > f(d):
+            if f(d) < f(b):
                 # new triple: (b, d, c)
                 a = b
                 b = d
