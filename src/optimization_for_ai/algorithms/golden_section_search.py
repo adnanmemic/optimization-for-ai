@@ -6,6 +6,13 @@ import numpy as np
 def golden_section_search(
     precision, trpl: np.ndarray, f: Callable[[float], float]
 ) -> None:
+    """Find the approximate minimum of a function.
+
+    Args:
+        precision: Target width of the interval.
+        trpl: Three starting points (a, b, c).
+        f: Function to minimize.
+    """
 
     (a, b, c) = trpl
 
@@ -42,11 +49,11 @@ def golden_section_search(
     trpl[:] = a, b, c
 
 
-def main():
+def main() -> None:
     trpl = np.array([0, 4, 10], dtype=float)
     golden_section_search(0.0001, trpl, lambda x: (x - 3) ** 2)
     print(f"New triple: {trpl}")
-    print(f"Minimum is: {int(trpl[1])}")
+    print(f"Minimum is: {trpl[1]}")
 
 
 if __name__ == "__main__":
