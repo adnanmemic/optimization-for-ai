@@ -3,7 +3,9 @@ import sympy as sp
 from collections.abc import Callable
 
 
-def coordinate_descent(x: float, y: float, f: Callable[[sp.Expr, sp.Expr], sp.Expr], max_iter:int =50) -> tuple[float, float]:
+def coordinate_descent(
+    x: float, y: float, f: Callable[[sp.Expr, sp.Expr], sp.Expr], max_iter: int = 50
+) -> tuple[float, float]:
     sx, sy = sp.symbols("x,y")
     expression = f(sx, sy)
 
@@ -19,9 +21,11 @@ def coordinate_descent(x: float, y: float, f: Callable[[sp.Expr, sp.Expr], sp.Ex
 
     return float(x), float(y)
 
+
 def main() -> None:
-    f = lambda x, y: 4*x**2 + 3*y**2 + 2*x - x*y
+    f = lambda x, y: 4 * x**2 + 3 * y**2 + 2 * x - x * y
     print(f"Minimum: {coordinate_descent(50, 4, f)}")
+
 
 if __name__ == "__main__":
     main()

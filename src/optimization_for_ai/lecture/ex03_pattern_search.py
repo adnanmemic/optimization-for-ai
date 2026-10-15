@@ -7,7 +7,7 @@ fP = f(P)
 
 m = np.argmin(fP)
 
-if m == 0: 
+if m == 0:
     s = s / 2
 else:
     x = P[m]
