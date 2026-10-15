@@ -1,5 +1,5 @@
-# Note: In the homework assignment the variable x (2-dim. np.array) and the function 'f'
-# are already predefined
+# Note: In the homework assignment the variable 'x' (2-dim. np.array) the 
+# gradient 'df(x)' and the function 'f' are already predefined
 
 alpha = 0.96
 

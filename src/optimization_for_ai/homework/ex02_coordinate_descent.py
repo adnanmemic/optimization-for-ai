@@ -1,4 +1,4 @@
-# Note: In the homework assignment the variable x, y, z and the function 'f'
+# Note: In the homework assignment the variable 'x', 'y', 'z' and the function 'f'
 # are already predefined
 
 x_temp = 10 * (1 - y - z) / 12

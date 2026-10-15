@@ -1,4 +1,4 @@
-# Note: In the homework assignment the variable x, d and the function 'f'
+# Note: In the homework assignment the variable 'x', 'd' and the function 'f'
 # are already predefined
 
 P = np.array([x, x - d, x + d + (d[1], -d[0]), x + d + (-d[1], d[0])])
